@@ -61,24 +61,27 @@ int main() {
 	kmeans.setDataPoints(dataPoints);
 	kmeans.Init();
 
-	auto cl = kmeans.getClusters();
-	cout<<cl.size()<<"\n";
-	for(int i = 0; i < cl.size(); i++) {
-		auto c = cl[i].getCentroid().getCoordinates();
-		for(int j = 0; j < c.size(); j++) {
-			cout<<c[j]<<", ";
-		}
-		cout<<"\n";
-	}
-
 	for(int i = 0; i < iter; i++) {
 		kmeans.findNearestAndAssign();
 		auto isUpdated = kmeans.updateCentroid();
 		if(isUpdated == false) {
 			break;
 		}
+		kmeans.clearTheClusters();
 	}
 
+	for(auto pts : kmeans.getDataPoints()) {
+		cout<<pts.getCluster()<<", ";
+	}
+
+	for(auto cntrds: kmeans.getClusters()) {
+		auto coords = cntrds.getCentroid().getCoordinates();
+		for(auto cds: coords) {
+			cout<<cds<<", ";
+		}
+		cout<<"\n";
+	}
+	
 	file.close();
 	return 0;
 }

@@ -49,7 +49,7 @@ public:
 
 	Points multiplyByScalar(double scalar) {
 		auto coords = this->coordinates;
-		for(auto c : coords) {
+		for(auto& c : coords) {
 			c *= scalar;
 		}
 		return Points(0, coords);

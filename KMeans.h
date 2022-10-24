@@ -36,9 +36,9 @@ public:
 			double minDist = 1e10;
 			int minIndx = 0;
 			for(int j = 0; j < K; j++) {
-				Points centroid(clusters[i].getCentroid());
-				// auto dist = centroid.getDistance(dataPoints[i]);
-				auto dist = 1.0;
+				Points centroid(clusters[j].getCentroid());
+				auto dist = centroid.getDistance(dataPoints[i]);
+				// auto dist = 1.0;
 				// auto dist = dataPoints[i].getDistance(centroid);
 				if(dist < minDist) {
 					minDist = dist;

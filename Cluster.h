@@ -15,6 +15,9 @@ public:
 	Points getCentroid() { return centroid; }
 
 	bool updateCentroid() {
+		if(points.empty()) {
+			return false;
+		}
 		Points average(points[0]);
 		for(auto i = 1; i < points.size(); i++) {
 			average = average.add(points[i]);

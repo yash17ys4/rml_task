@@ -62,16 +62,21 @@ int main() {
 	kmeans.setDataPoints(dataPoints);
 	kmeans.runKMeansAlgo();
 
-	for(auto pts : kmeans.getDataPoints()) {
+	auto clusteredPoints = kmeans.getDataPoints();
+	auto clusters = kmeans.getClusters();
+
+	//Showing the results
+	for(auto pts : clusteredPoints) {
 		cout<<pts.getCluster()<<", ";
 	}
-
-	for(auto cntrds: kmeans.getClusters()) {
+	cout<<"\n";
+	for(auto cntrds: clusters) {
 		auto coords = cntrds.getCentroid().getCoordinates();
+		cout<<"(";
 		for(auto cds: coords) {
 			cout<<cds<<", ";
 		}
-		cout<<"\n";
+		cout<<")\n";
 	}
 	
 	return 0;

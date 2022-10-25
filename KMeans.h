@@ -12,6 +12,14 @@ class KMeans {
 	int numOfPoints;
 	std::vector<Cluster> clusters;
 	std::vector<Points> dataPoints;
+
+	void Init();
+
+	void findNearestAndAssign();
+
+	bool updateCentroid();
+
+	void clearTheClusters();
 	
 public:
 	KMeans (int k, int dim, int iters, int numPts) :
@@ -23,15 +31,9 @@ public:
 
 	vector<Points> getDataPoints() { return dataPoints; }
 
-	void Init();
-
-	void findNearestAndAssign();
-
-	bool updateCentroid();
-
-	void clearTheClusters();
-
 	vector<Cluster> getClusters() { return clusters; }
+
+	void runKMeansAlgo();
 };
 
 #endif

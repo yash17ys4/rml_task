@@ -59,16 +59,7 @@ int main() {
 
 	KMeans kmeans(k, dataPoints[0].getDimesions(), iter, dataPoints.size());
 	kmeans.setDataPoints(dataPoints);
-	kmeans.Init();
-
-	for(int i = 0; i < iter; i++) {
-		kmeans.findNearestAndAssign();
-		auto isUpdated = kmeans.updateCentroid();
-		if(isUpdated == false) {
-			break;
-		}
-		kmeans.clearTheClusters();
-	}
+	kmeans.runKMeansAlgo();
 
 	for(auto pts : kmeans.getDataPoints()) {
 		cout<<pts.getCluster()<<", ";

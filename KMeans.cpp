@@ -41,3 +41,15 @@ void KMeans::clearTheClusters() {
 		clstr.clearClusterPoints();
 	}
 }
+
+void KMeans::runKMeansAlgo() {
+	Init();
+	for(int i = 0; i < iterations; i++) {
+		findNearestAndAssign();
+		auto isUpdated = updateCentroid();
+		if(isUpdated == false) {
+			break;
+		}
+		clearTheClusters();
+	}
+}

@@ -50,6 +50,7 @@ int main() {
 		auto coords = stringToVector(fileLine);
 		dataPoints.emplace_back(ptId, coords);
 	}
+	file.close();
 
 	int k, iter;
 	cout<<"Enter k:";
@@ -73,6 +74,5 @@ int main() {
 		cout<<"\n";
 	}
 	
-	file.close();
 	return 0;
 }
